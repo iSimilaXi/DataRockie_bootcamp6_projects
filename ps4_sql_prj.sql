@@ -1,3 +1,6 @@
+-- List of best-selling PS4 games
+-- https://www.kaggle.com/datasets/drahulsingh/list-of-best-selling-ps4-games?resource=download
+
 CREATE TABLE 'ListofbestsellingPlayStation4videogames' ('Game' TEXT,'Copies_sold' INTEGER,'Release_date' TEXT,'Year_Released' TEXT,'Genre' TEXT,'Sub-genre' TEXT,'Developer' TEXT,'Publisher' TEXT,'Region-Specific_Publisher' TEXT);
 INSERT INTO 'ListofbestsellingPlayStation4videogames' ('Game','Copies_sold','Release_date','Year_Released','Genre','Sub-genre','Developer','Publisher','Region-Specific_Publisher') VALUES 
  ('Minecraft: PlayStation 4 Edition','2000000','4-Sep-14',' 2,014 ','Sandbox','Survival','4J Studios','Sony Computer Entertainment','-'), 
@@ -33,14 +36,17 @@ INSERT INTO 'ListofbestsellingPlayStation4videogames' ('Game','Copies_sold','Rel
  ('Nioh','1000000','7-Feb-17',' 2,017 ','Action role-playing','','Team Ninja','Sony Computer Entertainment','JP Koei tecmo'), 
  ('Nioh 2','1400000','12-Mar-20',' 2,020 ','Action role-playing','','Team Ninja','Sony Computer Entertainment','JP Koei tecmo'), 
  ('Crash Bandicoot N. Sane Trilogy','2500000','30-Jun-17',' 2,017 ','Platform','-','Vicarious Visions','Activision','-');
- 
- SELECT developer,
+
+
+-- 1. best-selling developer within each genre, to worst
+SELECT developer,
 	genre,
 	SUM(copies_sold) AS Sales
 FROM ListofbestsellingPlayStation4videogames
 GROUP BY developer, genre
 ORDER BY sales DESC;
- 
+
+-- 2. best-selling games
 SELECT  game,
       	developer,
         publisher,
@@ -48,7 +54,8 @@ SELECT  game,
 FROM ListofbestsellingPlayStation4videogames
 GROUP BY developer, game, publisher
 ORDER BY sales DESC;
- 
+
+-- 3. average sales per game for publisher + best-selling publisher
 SELECT  publisher,
 	AVG(copies_sold) AS Average_Sales,
         SUM(copies_sold) AS Total_Sales
@@ -56,6 +63,7 @@ FROM ListofbestsellingPlayStation4videogames
 GROUP BY publisher
 ORDER BY Average_Sales, Total_Sales DESC;
 
+-- 4. sales for each year, best year for gaming (sell-wise)
 SELECT year_released,
 		SUM(copies_sold) AS sales
 FROM ListofbestsellingPlayStation4videogames
