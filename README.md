@@ -20,3 +20,7 @@ Homework projects for DataRockie Data Science Bootcamp.
   - [x] [Python ATM](python/Python_ATM_OOP.ipynb) - ATM class (Object-Oriented Programming) with 5 methods as ATM functions to interact with users.
 ## Essential Python Data Analyst
   - [x] [Public API (Magic the Gathering)](python/public_api.ipynb) - Fetching the first 10 cards from MtG public API website to create a dataframe.
+
+
+**Badge: [Certified Professional Data Analyst](https://api.badgr.io/public/assertions/1AuHy7fiTnu6O8t_KUpoLg)** <br>
+![Certified Professional Data Analyst Badge](https://api.badgr.io/public/assertions/1AuHy7fiTnu6O8t_KUpoLg/image)
